@@ -19,7 +19,7 @@ public:
 	SpreadsheetCell& operator=(const SpreadsheetCell& rhs);
 
 private:
-	std::string doubleToString(double inValue) const;
-	double stringToDouble(std::string_view inString) const;
+	static std::string doubleToString(double inValue);
+	static double stringToDouble(std::string_view inString);
 	double mValue;
 };

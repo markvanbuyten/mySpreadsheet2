@@ -47,12 +47,12 @@ SpreadsheetCell & SpreadsheetCell::operator=(const SpreadsheetCell & rhs)
 	return *this;
 }
 
-string SpreadsheetCell::doubleToString(double inValue) const
+string SpreadsheetCell::doubleToString(double inValue)
 {
 	return to_string(inValue);
 }
 
-double SpreadsheetCell::stringToDouble(string_view inString) const
+double SpreadsheetCell::stringToDouble(string_view inString)
 {
-	return strtod(inString.data(), nullptr);s
+	return strtod(inString.data(), nullptr);
 }

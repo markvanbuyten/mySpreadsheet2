@@ -6,8 +6,8 @@
 class Spreadsheet
 {
 public:
-	Spreadsheet() = default;
-	Spreadsheet(size_t width, size_t height);
+	
+	Spreadsheet(size_t width = 100, size_t height = 100);
 	Spreadsheet(const Spreadsheet& src);
 	Spreadsheet(Spreadsheet&& src) noexcept; // Move constructor
 	~Spreadsheet();
