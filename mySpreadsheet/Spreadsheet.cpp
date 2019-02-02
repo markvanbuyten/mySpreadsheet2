@@ -1,8 +1,11 @@
 #include "Spreadsheet.h"
 #include <utility>
+#include <algorithm>
 
-Spreadsheet::Spreadsheet(size_t width, size_t height)
-	: mWidth(width), mHeight(height)
+//size_t Spreadsheet::sCounter;
+
+Spreadsheet::Spreadsheet(size_t width, size_t height, SpreadsheetApp& theApp)
+	: mID(sCounter++), mWidth(std::min(width, kMaxWidth)), mHeight(std::min(height, kMaxHeight)), mTheApp(theApp)
 {
 	mCells = new SpreadsheetCell*[mWidth];
 	for (size_t i = 0; i < mWidth; i++) {
@@ -45,6 +48,11 @@ SpreadsheetCell & Spreadsheet::getCellAt(size_t x, size_t y)
 {
 	verifyCoordinate(x, y);
 	return mCells[x][y];
+}
+
+size_t Spreadsheet::getID() const
+{
+	return mID;
 }
 
 Spreadsheet & Spreadsheet::operator=(const Spreadsheet & rhs)

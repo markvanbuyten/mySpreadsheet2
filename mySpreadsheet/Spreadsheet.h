@@ -3,20 +3,26 @@
 #include <cstddef>
 #include "SpreadsheetCell.h"
 
+class SpreadsheetApp; //forward declaration
+
 class Spreadsheet
 {
 public:
 	
-	Spreadsheet(size_t width = 100, size_t height = 100);
+	Spreadsheet(size_t width /*= kMaxWidth*/, size_t height /*= kMaxHeight*/, SpreadsheetApp& theApp);
 	Spreadsheet(const Spreadsheet& src);
 	Spreadsheet(Spreadsheet&& src) noexcept; // Move constructor
 	~Spreadsheet();
 	void setCellAt(size_t x, size_t y, const SpreadsheetCell& cell);
 	SpreadsheetCell& getCellAt(size_t x, size_t y);
+	size_t getID() const;
 
 	Spreadsheet& operator=(const Spreadsheet& rhs);
 	Spreadsheet& operator=(Spreadsheet&& rhs) noexcept; // Move assign
 	friend void swap(Spreadsheet& first, Spreadsheet& second) noexcept;
+
+	static const size_t kMaxHeight = 100;
+	static const size_t kMaxWidth = 100;
 
 
 private:
@@ -28,4 +34,8 @@ private:
 	size_t mWidth;
 	size_t mHeight;
 	SpreadsheetCell** mCells = nullptr;
+	size_t mID = 0;
+	SpreadsheetApp& mTheApp;
+
+	static inline size_t sCounter;
 };
