@@ -39,3 +39,10 @@ SpreadsheetCell operator+(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs
 SpreadsheetCell operator-(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);
 SpreadsheetCell operator*(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);
 SpreadsheetCell operator/(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);
+
+bool operator<(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);
+bool operator<=(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);
+bool operator>(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);
+bool operator>=(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);
+bool operator==(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);
+bool operator!=(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs);

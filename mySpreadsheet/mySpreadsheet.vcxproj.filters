@@ -21,12 +21,18 @@
     <ClInclude Include="Spreadsheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SpreadsheetImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpreadsheetCell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Spreadsheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpreadsheetImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,115 +1,49 @@
 #include "Spreadsheet.h"
+#include "SpreadsheetImpl.h"
 #include <utility>
 #include <algorithm>
 
 //size_t Spreadsheet::sCounter;
 
-Spreadsheet::Spreadsheet(size_t width, size_t height, SpreadsheetApp& theApp)
-	: mID(sCounter++), mWidth(std::min(width, kMaxWidth)), mHeight(std::min(height, kMaxHeight)), mTheApp(theApp)
+Spreadsheet::Spreadsheet(SpreadsheetApp& theApp, size_t width, size_t height)
 {
-	mCells = new SpreadsheetCell*[mWidth];
-	for (size_t i = 0; i < mWidth; i++) {
-		mCells[i] = new SpreadsheetCell[mHeight];
-	}
+	mImpl = std::make_unique<Impl>(theApp, width, height);
 }
 
 Spreadsheet::Spreadsheet(const Spreadsheet& src)
-	: Spreadsheet(src.mWidth, src.mHeight)
 {
-	for (size_t i = 0; i < mWidth; i++) {
-		for (size_t j = 0; j < mHeight; j++) {
-			mCells[i][j] = src.mCells[i][j];
-		}
-	}
+	mImpl = std::make_unique<Impl>(*src.mImpl);
 }
 
-Spreadsheet::Spreadsheet(Spreadsheet && src) noexcept
-	: Spreadsheet()
-{
-	swap(*this, src);
-}
+Spreadsheet::~Spreadsheet() = default;
 
-Spreadsheet::~Spreadsheet()
-{
-	for (size_t i = 0; i < mWidth; i++) {
-		delete[] mCells[i];
-	}
-	delete[] mCells;
-	mCells = nullptr;
-}
 
 void Spreadsheet::setCellAt(size_t x, size_t y, const SpreadsheetCell & cell)
 {
-	verifyCoordinate(x, y);
-	mCells[x][y] = cell;
+	mImpl->setCellAt(x, y, cell);
 }
 
 SpreadsheetCell & Spreadsheet::getCellAt(size_t x, size_t y)
 {
-	verifyCoordinate(x, y);
-	return mCells[x][y];
+	
+	return mImpl->getCellAt(x, y);
 }
 
 size_t Spreadsheet::getID() const
 {
-	return mID;
+	return mImpl->getID();
 }
 
 Spreadsheet & Spreadsheet::operator=(const Spreadsheet & rhs)
 {
-	// Check for self-assignment
-	if (this == &rhs) {
-		return *this;
-	}
-
-	Spreadsheet temp(rhs); //Do all the work in a temporary instance
-	swap(*this, temp);
+	*mImpl = *rhs.mImpl;
 	return *this;
 }
 
-Spreadsheet & Spreadsheet::operator=(Spreadsheet && rhs) noexcept
-{
-	Spreadsheet temp(std::move(rhs));
-	swap(*this, temp);
-
-	return *this;
-}
-
-void Spreadsheet::verifyCoordinate(size_t x, size_t y) const
-{
-	if (x >= mWidth || y >= mHeight) {
-		throw std::out_of_range("");
-	}
-}
-/*
-void Spreadsheet::cleanup() noexcept
-{
-	for (size_t i = 0; i < mWidth; i++) {
-		delete[] mCells[i];
-	}
-	delete[] mCells;
-	mCells = nullptr;
-	mWidth = mHeight = 0;
-}
-
-void Spreadsheet::moveFrom(Spreadsheet & src) noexcept
-{
-	// Shallow copy of data
-	mWidth = src.mWidth;
-	mHeight = src.mHeight;
-	mCells = src.mCells;
-
-	// Reset the source object, because ownership has been moved!
-	src.mWidth = 0;
-	src.mHeight = 0;
-	src.mCells = nullptr;
-}*/
 
 void swap(Spreadsheet & first, Spreadsheet & second) noexcept
 {
 	using std::swap;
 
-	swap(first.mWidth, second.mWidth);
-	swap(first.mHeight, second.mHeight);
-	swap(first.mCells, second.mCells);
+	swap(first.mImpl, second.mImpl);
 }

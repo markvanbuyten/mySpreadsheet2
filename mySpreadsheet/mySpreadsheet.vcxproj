@@ -119,12 +119,14 @@
   <ItemGroup>
     <ClInclude Include="Spreadsheet.h" />
     <ClInclude Include="SpreadsheetCell.h" />
+    <ClInclude Include="SpreadsheetImpl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Spreadsheet.cpp" />
     <ClCompile Include="SpreadsheetCell.cpp">
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpplatest</LanguageStandard>
     </ClCompile>
+    <ClCompile Include="SpreadsheetImpl.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

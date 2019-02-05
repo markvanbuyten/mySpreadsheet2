@@ -118,3 +118,33 @@ SpreadsheetCell operator/(const SpreadsheetCell & lhs, const SpreadsheetCell & r
 	}
 	return SpreadsheetCell(lhs.getValue() / rhs.getValue());
 }
+
+bool operator<(const SpreadsheetCell & lhs, const SpreadsheetCell & rhs)
+{
+	return (lhs.getValue() < rhs.getValue());
+}
+
+bool operator<=(const SpreadsheetCell & lhs, const SpreadsheetCell & rhs)
+{
+	return (lhs.getValue() <= rhs.getValue());
+}
+
+bool operator>(const SpreadsheetCell & lhs, const SpreadsheetCell & rhs)
+{
+	return (lhs.getValue() > rhs.getValue());
+}
+
+bool operator>=(const SpreadsheetCell & lhs, const SpreadsheetCell & rhs)
+{
+	return (lhs.getValue() >= rhs.getValue());
+}
+
+bool operator==(const SpreadsheetCell & lhs, const SpreadsheetCell & rhs)
+{
+	return (lhs.getValue() == rhs.getValue());
+}
+
+bool operator!=(const SpreadsheetCell & lhs, const SpreadsheetCell & rhs)
+{
+	return (lhs.getValue() != rhs.getValue());
+}
