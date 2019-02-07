@@ -117,16 +117,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DoubleSpreadsheetCell.h" />
     <ClInclude Include="Spreadsheet.h" />
     <ClInclude Include="SpreadsheetCell.h" />
     <ClInclude Include="SpreadsheetImpl.h" />
+    <ClInclude Include="StringSpreadsheetCell.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DoubleSpreadsheetCell.cpp" />
     <ClCompile Include="Spreadsheet.cpp" />
-    <ClCompile Include="SpreadsheetCell.cpp">
-      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpplatest</LanguageStandard>
-    </ClCompile>
     <ClCompile Include="SpreadsheetImpl.cpp" />
+    <ClCompile Include="StringSpreadsheetCell.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

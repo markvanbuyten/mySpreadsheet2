@@ -24,15 +24,24 @@
     <ClInclude Include="SpreadsheetImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StringSpreadsheetCell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleSpreadsheetCell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SpreadsheetCell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Spreadsheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SpreadsheetImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StringSpreadsheetCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleSpreadsheetCell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
